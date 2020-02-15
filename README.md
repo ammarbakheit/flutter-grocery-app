@@ -3,12 +3,10 @@
 A new Flutter application.
 
 ## Getting Started
-<ol> 
-  <li>![alt text](./images/1.png) </li>
-   <li>![alt text](./images/2.png)</li>
-   <li>![alt text](./images/3.png) </li>
-</ol>
 
+![alt text](./images/1.png)
+![alt text](./images/2.png)
+![alt text](./images/3.png)
 
 This project is a starting point for a Flutter application.
 
