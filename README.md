@@ -4,7 +4,7 @@ A new Flutter application.
 
 ## Getting Started
 
-<img src="./images/1.png" height="300em" /> <img src="./images/2.pngf" height="300em" /> <img src="./images/3.png" height="300em" />
+<img src="./images/1.png" height="300em" /> <img src="./images/2.png" height="300em" /> <img src="./images/3.png" height="300em" />
 
 
 This project is a starting point for a Flutter application.
