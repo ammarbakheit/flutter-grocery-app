@@ -3,11 +3,13 @@ import 'package:flutter_shop_app/widgets/item.dart';
 import '../utils/colors.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   Map categories = {
     1: "assets/meat.png",
     2: "assets/food.png",
@@ -70,9 +72,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: whiteColor,
-      body: ListView(
+    return ListView(
         children: <Widget>[
           SizedBox(
             height: 40.0,
@@ -137,7 +137,6 @@ class _HomePageState extends State<HomePage> {
             ],
           )
         ],
-      ),
-    );
+      );
   }
 }
