@@ -4,6 +4,7 @@ import 'package:flutter_shop_app/screens/home_page.dart';
 import 'package:flutter_shop_app/screens/intro_screen.dart';
 import 'package:flutter_shop_app/screens/main_page.dart';
 import 'package:flutter_shop_app/screens/products.dart';
+import 'package:flutter_shop_app/screens/sidebar.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         "/intro": (BuildContext context) => IntroScreen(),
         "/": (BuildContext context) => MainPage(),
         "/products": (BuildContext context) => Products(),
+        "/sidebar": (BuildContext context) => SideBar(),
       },
     );
   }

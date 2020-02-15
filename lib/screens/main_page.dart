@@ -13,12 +13,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      body: Stack(
-        children: <Widget>[
-          HomePage(),
-          // SideBar()
-        ],
-       )
+      body:  HomePage()
     );
   }
 }

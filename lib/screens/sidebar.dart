@@ -1,26 +1,42 @@
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 
-class SideBar extends StatelessWidget {
+class SideBar extends StatefulWidget {
+  @override
+  _SideBarState createState() => _SideBarState();
+}
+
+class _SideBarState extends State<SideBar> {
+  final bool _isopened = false;
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            color: blueColor,
+    final screanWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: blueColor,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: blueColor,
+            ),
           ),
-        ),
-        Align(
-          alignment: Alignment(0, -0.7),
-          child: Container(
-            width: 35,
-            height: 110,
-            color: blueColor,
+          Expanded(
+            child: Container(
+              color: greenColor,
+            ),
           ),
-        )
-      ],
+          Expanded(
+            child: Container(
+              color: grayColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app/widgets/item.dart';
 import '../utils/colors.dart';
+import '../utils/food.dart';
 
 class HomePage extends StatefulWidget {
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  Map categories = {
-    1: "assets/meat.png",
-    2: "assets/food.png",
-    3: "assets/pizza.png",
-    4: "assets/fruit.png",
-    5: "assets/fish.png",
-  };
-
   int _selectedCategoryItem = 0;
 
   Widget _buildTopCards(
@@ -30,7 +21,23 @@ class _HomePageState extends State<HomePage> {
           _selectedCategoryItem = index;
         });
 
-        Navigator.of(context).pushNamed("/products");
+        Navigator.of(context)
+            .push(MaterialPageRoute<void>(builder: (BuildContext context) {
+          return Scaffold(
+            appBar: AppBar(),
+            body: Center(
+              child: Container(
+                child: Hero(
+                  tag: title,
+                  child:Image.asset(
+                      title,
+                      scale: 0.5,
+                    ),
+                ),
+              ),
+            ),
+          );
+        }));
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -57,9 +64,12 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Image.asset(
-                    title,
-                    scale: 0.5,
+                  Hero(
+                    tag: title,
+                    child: Image.asset(
+                      title,
+                      scale: 0.5,
+                    ),
                   ),
                 ],
               ),
@@ -73,70 +83,88 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-        children: <Widget>[
-          SizedBox(
-            height: 40.0,
+      children: <Widget>[
+        SizedBox(
+          height: 40.0,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                height: 40.0,
+                width: 40.0,
+                child: GestureDetector(
+                  child: Icon(
+                    Icons.menu,
+                    color: blueColor,
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/sidebar");
+                  },
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40.0),
+                child: Container(
+                  child: Text(
+                    "Grocery App",
+                    style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: blueColor),
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+        ),
+        SizedBox(
+          height: 40.0,
+        ),
+        Container(
+          height: 200.0,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return SizedBox(
+                  width: 20.0,
+                );
+              }
+
+              return _buildTopCards(
+                index - 1,
+                categories.values.toList()[index - 1],
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: 40.0,
+        ),
+        Column(
+          children: <Widget>[
+            Row(
               children: <Widget>[
-                Container(
-                  height: 40.0,
-                  width: 40.0,
-                  child: Icon(Icons.menu, color: blueColor,),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40.0),
-                  child: Container(
-                    child: Text(
-                      "Grocery App",
-                      style: TextStyle(
-                          fontSize: 30.0, fontWeight: FontWeight.bold, color: blueColor),
-                    ),
-                  ),
-                ),
+                Item(),
+                Item(),
               ],
             ),
-          ),
-          SizedBox(
-            height: 40.0,
-          ),
-          Container(
-            height: 200.0,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == 0) {
-                  return SizedBox(
-                    width: 20.0,
-                  );
-                }
-
-                return _buildTopCards(
-                  index - 1,
-                  categories.values.toList()[index - 1],
-                );
-              },
+            Row(
+              children: <Widget>[
+                Item(),
+                Item(),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 40.0,
-          ),
-          Column(
-            children: <Widget>[
-              Item(),
-                  Item(),
-                  Item(),
-                  Item(),
-            ],
-          )
-        ],
-      );
+          ],
+        )
+      ],
+    );
   }
 }
