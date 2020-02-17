@@ -11,10 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedCategoryItem = 0;
 
-  Widget _buildTopCards(
-    int index,
-    String title,
-  ) {
+  Widget _buildTopCards(int index, FoodItems foodItems) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -24,15 +21,157 @@ class _HomePageState extends State<HomePage> {
         Navigator.of(context)
             .push(MaterialPageRoute<void>(builder: (BuildContext context) {
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              elevation: 0.0,
+              backgroundColor: whiteColor,
+              iconTheme: IconThemeData(color: blueColor),
+            ),
             body: Center(
               child: Container(
                 child: Hero(
-                  tag: title,
-                  child:Image.asset(
-                      title,
-                      scale: 0.5,
+                  transitionOnUserGestures: true,
+                  tag: foodItems.itemPic,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                child: Image.asset(
+                                  foodItems.itemPic,
+                                ),
+                              ),
+                              Container(
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    Text(foodItems.itemName,
+                                        style: TextStyle(
+                                            fontSize: 30,
+                                            color: blueColor,
+                                            fontWeight: FontWeight.bold)),
+                                    Container(
+                                      padding: EdgeInsets.only(top: 20),
+                                      child: Text(
+                                          foodItems.itemPrice.toString(),
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Divider(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "Description",
+                                style: TextStyle(
+                                    fontSize: 40,
+                                    color: blueColor,
+                                    fontWeight: FontWeight.w900),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(foodItems.itemDescription)
+                            ],
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              GestureDetector(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: blueColor,
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_up,
+                                    color: whiteColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                        color: grayColor, width: 1.0)),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 40),
+                                child: Text(
+                                  foodItems.itemCuantity.toString(),
+                                  style: TextStyle(fontSize: 22),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              GestureDetector(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: blueColor,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: whiteColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              GestureDetector(
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 90),
+                                  decoration: BoxDecoration(
+                                      color: blueColor,
+                                      borderRadius: BorderRadius.circular(30)),
+                                  child: Text(
+                                    "Add to Card",
+                                    style: TextStyle(
+                                        color: whiteColor, fontSize: 24),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
+                  ),
                 ),
               ),
             ),
@@ -65,9 +204,9 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Hero(
-                    tag: title,
+                    tag: foodItems.itemPic,
                     child: Image.asset(
-                      title,
+                      foodItems.itemPic,
                       scale: 0.5,
                     ),
                   ),
@@ -88,7 +227,7 @@ class _HomePageState extends State<HomePage> {
           height: 40.0,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -108,9 +247,9 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40.0),
-                child: Container(
+              Expanded(
+                flex: 3,
+                child: Center(
                   child: Text(
                     "Grocery App",
                     style: TextStyle(
@@ -118,6 +257,22 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold,
                         color: blueColor),
                   ),
+                ),
+              ),
+               Container(
+                height: 40.0,
+                width: 40.0,
+                child: GestureDetector(
+                  child: Icon(
+                    Icons.shopping_cart,
+                    color: blueColor,
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/sidebar");
+                  },
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
             ],
@@ -128,21 +283,23 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           height: 200.0,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (BuildContext context, int index) {
-              if (index == 0) {
-                return SizedBox(
-                  width: 20.0,
+          child: Container(
+            padding: EdgeInsets.only(left: 20),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              itemBuilder: (BuildContext context, int index) {
+                // if (index == 0) {
+                //   return SizedBox(
+                //     width: 20.0,
+                //   );
+                // }
+                return _buildTopCards(
+                  index,
+                  categories.toList()[index],
                 );
-              }
-
-              return _buildTopCards(
-                index - 1,
-                categories.values.toList()[index - 1],
-              );
-            },
+              },
+            ),
           ),
         ),
         SizedBox(
@@ -150,6 +307,19 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  "Groceries",
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: blueColor,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ),
             Row(
               children: <Widget>[
                 Item(),

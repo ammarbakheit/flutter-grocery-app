@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop_app/utils/colors.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import '../utils/colors.dart';
 
 
 class IntroScreen extends StatelessWidget {

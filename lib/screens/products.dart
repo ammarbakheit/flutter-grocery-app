@@ -14,13 +14,7 @@ class _ProductsState extends State<Products> {
       appBar: AppBar(),
       body: Center(
         child: Container(
-          child: Hero(
-             tag: "assets/meat.png",
-            child: Icon(
-              Icons.add,
-              size: 150.0,
-            ),
-          ),
+          child: Text("product")
         ),
       ),
     );

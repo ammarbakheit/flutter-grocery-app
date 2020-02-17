@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app/screens/home_page.dart';
-import 'package:flutter_shop_app/screens/sidebar.dart';
-import '../utils/colors.dart';
+import 'package:flutter_shop_app/utils/colors.dart';
 
 class MainPage extends StatefulWidget {
   @override

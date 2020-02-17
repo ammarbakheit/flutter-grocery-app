@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 class Item extends StatelessWidget {
+  final String title ;
+
+  const Item({Key key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed("/sidebar");
+        Navigator.of(context).pushNamed("/products",);
       },
           child: Column(
               children: <Widget>[
@@ -45,22 +48,24 @@ class Item extends StatelessWidget {
                             padding: const EdgeInsets.only(left:8.0),
                             child: Text(
                               "\$ 21",
-                              style: TextStyle(fontSize: 24, color: greenColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 24, color: blueColor, fontWeight: FontWeight.bold),
                             ),
                           ),
                           GestureDetector(
                             child: Container(
                               width: 150,
+                              height: 40,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Center(
                                     child: Text(
                                   "Add to cart",
-                                  style: TextStyle(color: whiteColor),
+                                  style: TextStyle(color: whiteColor,
+                                  fontSize: 18),
                                 )),
                               ),
                               decoration: BoxDecoration(
-                                  color: greenColor,
+                                  color: blueColor,
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20),
                                       bottomRight: Radius.circular(20))),
