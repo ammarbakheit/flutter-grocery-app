@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app/data/repositories/item_repository.dart';
+import 'package:flutter_shop_app/screens/cart.dart';
 import 'package:flutter_shop_app/screens/home_page.dart';
 import 'package:flutter_shop_app/screens/mainScreens/intro_screen.dart';
 import 'package:flutter_shop_app/screens/mainScreens/main_page.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         "/intro": (BuildContext context) => IntroScreen(),
         "/": (BuildContext context) => MainPage(),
         "/products": (BuildContext context) => Products(),
-        // "/product": (BuildContext context) => Product(),
+        "/cart": (BuildContext context) => Cart(),
         "/sidebar": (BuildContext context) => SideBar(),
       },
     );
