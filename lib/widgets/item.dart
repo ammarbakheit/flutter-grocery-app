@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop_app/screens/product.dart';
+import 'package:flutter_shop_app/screens/products.dart';
+import 'package:flutter_shop_app/utils/food.dart';
+import 'package:flutter_shop_app/utils/grocery/grocery.dart';
 import '../utils/colors.dart';
-class Item extends StatelessWidget {
-  final String title ;
+class Item extends StatefulWidget {
+  final GroceryItem groceryItem;
+  final int index;
+  
+  const Item({key: Key,this.groceryItem, this.index});
 
-  const Item({Key key, this.title}) : super(key: key);
+  @override
+  _ItemState createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed("/products",);
+      onTap: () async {
+        Navigator.of(context)
+            .push(
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+          return Product(groceryItem: widget.groceryItem,);
+        }));
       },
           child: Column(
               children: <Widget>[
@@ -35,7 +51,7 @@ class Item extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Image.asset(
-                              "assets/food.png",
+                              widget.groceryItem.itemPic,
                               scale: 0.5,
                               height: 100,
                             ),

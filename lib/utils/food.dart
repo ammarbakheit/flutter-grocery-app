@@ -1,5 +1,21 @@
 import 'package:equatable/equatable.dart';
 
+class FoodItems extends Equatable {
+  final String itemName;
+  final String itemPic;
+  final String itemDescription;
+  final int itemPrice;
+  final int itemCuantity;
+
+  FoodItems(
+      {this.itemPic,
+      this.itemName,
+      this.itemDescription,
+      this.itemPrice,
+      this.itemCuantity});
+}
+
+
 List<FoodItems> categories = [
   FoodItems(
       itemPic: "assets/meat.png",
@@ -27,13 +43,7 @@ List<FoodItems> categories = [
       itemPrice: 200),
 ];
 
-class FoodItems extends Equatable {
-  final String itemName;
-  final String itemPic;
-  final String itemDescription;
-  final int itemPrice;
-  final int itemCuantity;
 
-  FoodItems( 
-      { this.itemPic,this.itemName, this.itemDescription, this.itemPrice, this.itemCuantity});
-}
+
+
+

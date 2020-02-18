@@ -100,7 +100,7 @@ class IntroScreen extends StatelessWidget {
             activeColor: blueColor
           ),
           onDone: () { 
-                Navigator.of(context).popAndPushNamed("/");
+                Navigator.of(context).popAndPushNamed("/main");
            },
         ),
     );

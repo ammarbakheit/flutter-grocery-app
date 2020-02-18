@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app/screens/item_screen.dart';
+import 'package:flutter_shop_app/utils/grocery/grocery.dart';
 import 'package:flutter_shop_app/widgets/item.dart';
 import '../utils/colors.dart';
 import '../utils/food.dart';
@@ -11,9 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedCategoryItem = 0;
-  
-  
-  
 
   Widget _buildTopCards(int index, FoodItems foodItems) {
     return GestureDetector(
@@ -22,9 +20,7 @@ class _HomePageState extends State<HomePage> {
           _selectedCategoryItem = index;
         });
         Navigator.of(context)
-            .push(
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) {
+            .push(MaterialPageRoute<void>(builder: (BuildContext context) {
           return ItemScreen(foodItems: foodItems, index: index);
         }));
       },
@@ -69,7 +65,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -110,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-               Container(
+              Container(
                 height: 40.0,
                 width: 40.0,
                 child: GestureDetector(
@@ -153,38 +148,30 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        Container(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            "Groceries",
+            style: TextStyle(
+                fontSize: 40, color: blueColor, fontWeight: FontWeight.w900),
+          ),
+        ),
         SizedBox(
           height: 40.0,
         ),
-        Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  "Groceries",
-                  style: TextStyle(
-                      fontSize: 40,
-                      color: blueColor,
-                      fontWeight: FontWeight.w900),
-                ),
-              ),
+        Container(
+          height: 400,
+          padding: EdgeInsets.all(20),
+          child: Container(
+            child: ListView.builder(
+              itemCount: groceries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Item(groceryItem: groceries[index], index: index,);
+              },
             ),
-            Row(
-              children: <Widget>[
-                Item(),
-                Item(),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Item(),
-                Item(),
-              ],
-            ),
-          ],
-        )
+          ),
+        ),
+        
       ],
     );
   }

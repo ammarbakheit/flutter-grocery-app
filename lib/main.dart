@@ -4,6 +4,7 @@ import 'package:flutter_shop_app/screens/cart.dart';
 import 'package:flutter_shop_app/screens/home_page.dart';
 import 'package:flutter_shop_app/screens/mainScreens/intro_screen.dart';
 import 'package:flutter_shop_app/screens/mainScreens/main_page.dart';
+import 'package:flutter_shop_app/screens/mainScreens/splash_screen.dart';
 
 import 'package:flutter_shop_app/screens/product.dart';
 import 'package:flutter_shop_app/screens/products.dart';
@@ -17,11 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shop App',
-      initialRoute: "/intro",
+      initialRoute: "/",
       routes: <String, WidgetBuilder> {
-        "/intro": (BuildContext context) => IntroScreen(),
-        "/": (BuildContext context) => MainPage(),
-        "/products": (BuildContext context) => Products(),
+        "/": (BuildContext context) => SplashScreenWidget(),
+        "/main": (BuildContext context) => MainPage(),
+        "/product": (BuildContext context) => Product(),
         "/cart": (BuildContext context) => Cart(),
         "/sidebar": (BuildContext context) => SideBar(),
       },
