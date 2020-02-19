@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_shop_app/data/models/item_model.dart';
-import 'package:flutter_shop_app/entities/item.dart';
 
 class ItemRepository extends Equatable {
 

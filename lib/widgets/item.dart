@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app/screens/product.dart';
-import 'package:flutter_shop_app/screens/products.dart';
-import 'package:flutter_shop_app/utils/food.dart';
 import 'package:flutter_shop_app/utils/grocery/grocery.dart';
 import '../utils/colors.dart';
 class Item extends StatefulWidget {
@@ -29,9 +27,9 @@ class _ItemState extends State<Item> {
           child: Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  height: 200,
-                  width: 150,
+                  // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                  // height: MediaQuery.of(context).size.height/4,
+                  width: MediaQuery.of(context).size.width/3,
                   decoration: BoxDecoration(
                       color: whiteColor,
                       borderRadius: BorderRadius.circular(20),
@@ -50,35 +48,45 @@ class _ItemState extends State<Item> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Text(widget.groceryItem.itemName,
+                            style: TextStyle(
+                              color: blueColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900
+                            ),),
+                          ),
                             Image.asset(
                               widget.groceryItem.itemPic,
                               scale: 0.5,
-                              height: 100,
+                              height: 40,
                             ),
+                            
                           ],
                         ),
                       ),
                       Column(
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left:8.0),
-                            child: Text(
-                              "\$ 21",
-                              style: TextStyle(fontSize: 24, color: blueColor, fontWeight: FontWeight.bold),
-                            ),
-                          ),
                           GestureDetector(
                             child: Container(
                               width: 150,
                               height: 40,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                    child: Text(
-                                  "Add to cart",
-                                  style: TextStyle(color: whiteColor,
-                                  fontSize: 18),
-                                )),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    Text(
+                                      "Add to cart",
+                                      style: TextStyle(color: whiteColor,
+                                      fontSize: 18),
+                                    ),
+                                    Text(" \$ ${widget.groceryItem.itemPrice}",
+                                    style: TextStyle(color: whiteColor,
+                                      fontSize: 18),)
+                                  ],
+                                ),
                               ),
                               decoration: BoxDecoration(
                                   color: blueColor,

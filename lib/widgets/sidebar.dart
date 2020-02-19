@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shop_app/data/bloc/auth/authentication_bloc.dart';
+import 'package:flutter_shop_app/data/bloc/auth/authentication_event.dart';
 import '../utils/colors.dart';
 
 class SideBar extends StatefulWidget {
@@ -7,11 +10,11 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
-  final bool _isopened = false;
+  // final bool _isopened = false;
 
   @override
   Widget build(BuildContext context) {
-    final screanWidth = MediaQuery.of(context).size.width;
+    // final screanWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -69,13 +72,22 @@ class _SideBarState extends State<SideBar> {
                   ),
                   Divider(),
                   ListTile(
-                    title: Text("close"),
-                    trailing: Icon(Icons.close, color: blueColor,),
+                    title: Text("back"),
+                    trailing: Icon(Icons.arrow_back, color: blueColor,),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   Divider(),
+                  ListTile(
+                    title: Text("close"),
+                    trailing: Icon(Icons.close, color: blueColor,),
+                    onTap: () {
+                     BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+
+                      Navigator.of(context).pop();
+                    },
+                  ),
                 ],
               ),
             ),

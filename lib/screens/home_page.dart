@@ -67,112 +67,116 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        SizedBox(
-          height: 40.0,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                height: 40.0,
-                width: 40.0,
-                child: GestureDetector(
-                  child: Icon(
-                    Icons.menu,
-                    color: blueColor,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/sidebar");
-                  },
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Center(
-                  child: Text(
-                    "Grocery App",
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                        color: blueColor),
-                  ),
-                ),
-              ),
-              Container(
-                height: 40.0,
-                width: 40.0,
-                child: GestureDetector(
-                  child: Icon(
-                    Icons.shopping_cart,
-                    color: blueColor,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/cart");
-                  },
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ],
+    return SingleChildScrollView(
+          child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 40.0,
           ),
-        ),
-        SizedBox(
-          height: 40.0,
-        ),
-        Container(
-          height: 200.0,
-          child: Container(
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 40.0,
+                  width: 40.0,
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.menu,
+                      color: blueColor,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/sidebar");
+                    },
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Center(
+                    child: Text(
+                      "Grocery App",
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: blueColor),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 40.0,
+                  width: 40.0,
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.shopping_cart,
+                      color: blueColor,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/cart");
+                    },
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 40.0,
+          ),
+          Container(
+            height: 200.0,
+            child: Container(
+              padding: EdgeInsets.only(left: 20),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  // if (index == 0) {
+                  //   return SizedBox(
+                  //     width: 20.0,
+                  //   );
+                  // }
+                  return _buildTopCards(
+                    index,
+                    categories.toList()[index],
+                  );
+                },
+              ),
+            ),
+          ),
+          Container(
             padding: EdgeInsets.only(left: 20),
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (BuildContext context, int index) {
-                // if (index == 0) {
-                //   return SizedBox(
-                //     width: 20.0,
-                //   );
-                // }
-                return _buildTopCards(
-                  index,
-                  categories.toList()[index],
-                );
-              },
+            child: Text(
+              "Groceries",
+              style: TextStyle(
+                  fontSize: 40, color: blueColor, fontWeight: FontWeight.w900),
             ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Groceries",
-            style: TextStyle(
-                fontSize: 40, color: blueColor, fontWeight: FontWeight.w900),
+          SizedBox(
+            height: 40.0,
           ),
-        ),
-        SizedBox(
-          height: 40.0,
-        ),
-        Container(
-          height: 400,
-          padding: EdgeInsets.all(20),
-          child: Container(
-            child: ListView.builder(
-              itemCount: groceries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Item(groceryItem: groceries[index], index: index,);
-              },
-            ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+                    child: GridView.count(
+                      primary: false,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 0,
+                      crossAxisSpacing: 0,
+                      children: List.generate(groceries.length, (index) {
+                        return Item(
+                          groceryItem: groceries[index],
+                          index: index,
+                        );
+                      }),
+                    ),
           ),
-        ),
-        
-      ],
+        ],
+      ),
     );
   }
 }
