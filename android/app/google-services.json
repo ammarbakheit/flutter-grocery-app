@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "17811721686",
+    "firebase_url": "https://groceryapp-e58c7.firebaseio.com",
+    "project_id": "groceryapp-e58c7",
+    "storage_bucket": "groceryapp-e58c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17811721686:android:f038c6cf991cb40ead2877",
+        "android_client_info": {
+          "package_name": "com.ammarbakheit.flutter_shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17811721686-uu5b9o812ko6pleikjjonl4hetigrgg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNfHkpW4wmK1W6bnxUjI7jiNpVmWf_IdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17811721686-uu5b9o812ko6pleikjjonl4hetigrgg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

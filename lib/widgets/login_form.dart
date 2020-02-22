@@ -40,9 +40,13 @@ class _LoginFormState extends State<LoginForm> {
           return Form(
             child: Column(
               children: [
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'username'),
-                  controller: _usernameController,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'username'),
+                    controller: _usernameController,
+                  ),
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'password'),
