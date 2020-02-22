@@ -1,25 +1,12 @@
-import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
+part of 'authentication_bloc.dart';
 
 abstract class AuthenticationEvent extends Equatable {
-  AuthenticationEvent([List props = const []]) : super(props);
-}
-
-class AppStarted extends AuthenticationEvent {
   @override
-  String toString() => 'AppStarted';
+  List<Object> get props => [];
 }
 
-class LoggedIn extends AuthenticationEvent {
-  final String token;
+class AppStarted extends AuthenticationEvent {}
 
-  LoggedIn({@required this.token}) : super([token]);
+class LoggedIn extends AuthenticationEvent {}
 
-  @override
-  String toString() => 'LoggedIn { token: $token }';
-}
-
-class LoggedOut extends AuthenticationEvent {
-  @override
-  String toString() => 'LoggedOut';
-}
+class LoggedOut extends AuthenticationEvent {}

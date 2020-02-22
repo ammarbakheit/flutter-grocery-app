@@ -6,6 +6,9 @@ import '../utils/colors.dart';
 import '../utils/food.dart';
 
 class HomePage extends StatefulWidget {
+  final String name;
+
+  const HomePage({Key key, this.name}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }

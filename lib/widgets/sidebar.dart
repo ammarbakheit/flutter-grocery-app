@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shop_app/data/bloc/auth/authentication_bloc.dart';
-import 'package:flutter_shop_app/data/bloc/auth/authentication_event.dart';
 import '../utils/colors.dart';
 
 class SideBar extends StatefulWidget {
@@ -81,7 +80,7 @@ class _SideBarState extends State<SideBar> {
                   Divider(),
                   ListTile(
                     title: Text("close"),
-                    trailing: Icon(Icons.close, color: blueColor,),
+                    trailing: Icon(Icons.exit_to_app, color: blueColor,),
                     onTap: () {
                      BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
 
