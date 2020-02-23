@@ -34,7 +34,8 @@ dependencies:
   firebase_core: ^0.4.0+8
   google_sign_in: ^4.0.0
   font_awesome_flutter: ^8.4.0
-
+  get_it:
+  provider:
 
 
 dev_dependencies:

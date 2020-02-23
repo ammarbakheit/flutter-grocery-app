@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop_app/utils/colors.dart';
 import 'package:flutter_shop_app/utils/grocery/grocery.dart';
-import '../utils/colors.dart';
 
 class Product extends StatefulWidget {
   final GroceryItem groceryItem;

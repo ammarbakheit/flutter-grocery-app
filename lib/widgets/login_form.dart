@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shop_app/data/bloc/auth/authentication_bloc.dart';
 import 'package:flutter_shop_app/data/bloc/login/bloc.dart';
 import 'package:flutter_shop_app/data/repositories/user_repository.dart';
-import 'package:flutter_shop_app/screens/register_screen.dart';
+import 'package:flutter_shop_app/screens/registerScreen/register_screen.dart';
+import 'package:flutter_shop_app/utils/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
@@ -79,54 +79,79 @@ class _LoginFormState extends State<LoginForm> {
       },
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Form(
-              child: ListView(
-                children: <Widget>[
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.email),
-                      labelText: 'Email',
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    autovalidate: true,
-                    autocorrect: false,
-                    validator: (_) {
-                      return !state.isEmailValid ? 'Invalid Email' : null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.lock),
-                      labelText: 'Password',
-                    ),
-                    obscureText: true,
-                    autovalidate: true,
-                    autocorrect: false,
-                    validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Form(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        LoginButton(
-                          onPressed: isLoginButtonEnabled(state)
-                              ? _onFormSubmitted
-                              : null,
+                        TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                              borderSide: BorderSide(),
+                            ),
+                            icon: Icon(Icons.email),
+                            labelText: 'Email',
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                          autovalidate: true,
+                          autocorrect: false,
+                          validator: (_) {
+                            return !state.isEmailValid ? 'Invalid Email' : null;
+                          },
                         ),
-                        GoogleLoginButton(),
-                        CreateAccountButton(userRepository: _userRepository),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                              borderSide: BorderSide(),
+                            ),
+                            icon: Icon(Icons.lock),
+                            labelText: 'Password',
+                          ),
+                          obscureText: true,
+                          autovalidate: true,
+                          autocorrect: false,
+                          validator: (_) {
+                            return !state.isPasswordValid
+                                ? 'Invalid Password'
+                                : null;
+                          },
+                        ),
+                        Column(
+                          // crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            LoginButton(
+                              onPressed: isLoginButtonEnabled(state)
+                                  ? _onFormSubmitted
+                                  : null,
+                            ),
+                            SizedBox(height: 30,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                GoogleLoginButton(),
+                                CreateAccountButton(
+                                    userRepository: _userRepository),
+                              ],
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },
@@ -163,8 +188,6 @@ class _LoginFormState extends State<LoginForm> {
   }
 }
 
-
-
 class LoginButton extends StatelessWidget {
   final VoidCallback _onPressed;
 
@@ -179,12 +202,18 @@ class LoginButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.0),
       ),
       onPressed: _onPressed,
-      child: Text('Login'),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Login',
+          style: TextStyle(
+              // color: blueColor
+              ),
+        ),
+      ),
     );
   }
 }
-
-
 
 class GoogleLoginButton extends StatelessWidget {
   @override
@@ -205,7 +234,6 @@ class GoogleLoginButton extends StatelessWidget {
   }
 }
 
-
 class CreateAccountButton extends StatelessWidget {
   final UserRepository _userRepository;
 
@@ -216,9 +244,16 @@ class CreateAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return RaisedButton(
+      color: blueColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
       child: Text(
         'Create an Account',
+        style: TextStyle(
+          color: whiteColor
+        ),
       ),
       onPressed: () {
         Navigator.of(context).push(

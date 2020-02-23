@@ -35,6 +35,9 @@ class UserRepository {
       password: password,
     );
   }
+  // Future<FirebaseUser> signUpWithGoogle(String email, String password) async {
+
+  // } 
 
   Future<void> signOut() async {
     return Future.wait([

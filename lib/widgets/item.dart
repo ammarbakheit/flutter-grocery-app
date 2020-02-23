@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop_app/screens/product.dart';
+import 'package:flutter_shop_app/screens/productScreen/product.dart';
 import 'package:flutter_shop_app/utils/grocery/grocery.dart';
 import '../utils/colors.dart';
 class Item extends StatefulWidget {

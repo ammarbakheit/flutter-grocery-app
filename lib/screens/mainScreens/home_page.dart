@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop_app/screens/item_screen.dart';
+import 'package:flutter_shop_app/screens/productScreen/item_screen.dart';
+import 'package:flutter_shop_app/utils/colors.dart';
+import 'package:flutter_shop_app/utils/food.dart';
 import 'package:flutter_shop_app/utils/grocery/grocery.dart';
 import 'package:flutter_shop_app/widgets/item.dart';
-import '../utils/colors.dart';
-import '../utils/food.dart';
+
 
 class HomePage extends StatefulWidget {
   final String name;

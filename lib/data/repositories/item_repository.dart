@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_shop_app/data/models/item_model.dart';
 
 class ItemRepository extends Equatable {
-
+ 
   Future<ItemModel> getItems() async {
     Future.delayed(Duration(seconds: 3));
 

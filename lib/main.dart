@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_shop_app/screens/cart.dart';
-import 'package:flutter_shop_app/screens/login_page.dart';
+import 'package:flutter_shop_app/screens/loginScreens/login_page.dart';
 import 'package:flutter_shop_app/screens/mainScreens/main_page.dart';
 import 'package:flutter_shop_app/screens/mainScreens/splash_screen.dart';
-import 'package:flutter_shop_app/screens/product.dart';
-import 'package:flutter_shop_app/simple_bloc_delegate.dart';
+import 'package:flutter_shop_app/screens/productScreen/cart.dart';
+import 'package:flutter_shop_app/screens/productScreen/product.dart';
+import 'package:flutter_shop_app/services/api/api.dart';
+import 'package:flutter_shop_app/utils/simple_bloc_delegate.dart';
 import 'package:flutter_shop_app/widgets/sidebar.dart';
-import 'package:splashscreen/splashscreen.dart';
-
 import 'data/bloc/auth/authentication_bloc.dart';
 import 'data/repositories/user_repository.dart';
+import 'locator.dart';
 
 void main() {
+  setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
    BlocSupervisor.delegate = SimpleBlocDelegate();
   final UserRepository userRepository = UserRepository();
@@ -36,6 +37,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  var api = locator<Api>();
+  
     return MaterialApp(
         debugShowCheckedModeBanner: false,
       title: 'Shop App',

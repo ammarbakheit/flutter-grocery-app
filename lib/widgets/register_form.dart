@@ -72,45 +72,63 @@ class _RegisterFormState extends State<RegisterForm> {
       },
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.all(20),
-            child: Form(
-              child: ListView(
-                children: <Widget>[
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.email),
-                      labelText: 'Email',
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_) {
-                      return !state.isEmailValid ? 'Invalid Email' : null;
-                    },
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Form(
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(),
+                          ),
+                          icon: Icon(Icons.email),
+                          labelText: 'Email',
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
+                        autovalidate: true,
+                        validator: (_) {
+                          return !state.isEmailValid ? 'Invalid Email' : null;
+                        },
+                      ),
+                      SizedBox(height: 30,),
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(),
+                          ),
+                          icon: Icon(Icons.lock),
+                          labelText: 'Password',
+                        ),
+                        obscureText: true,
+                        autocorrect: false,
+                        autovalidate: true,
+                        validator: (_) {
+                          return !state.isPasswordValid
+                              ? 'Invalid Password'
+                              : null;
+                        },
+                      ),
+                      SizedBox(height: 10,),
+                      RegisterButton(
+                        onPressed: isRegisterButtonEnabled(state)
+                            ? _onFormSubmitted
+                            : null,
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.lock),
-                      labelText: 'Password',
-                    ),
-                    obscureText: true,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
-                    },
-                  ),
-                  RegisterButton(
-                    onPressed: isRegisterButtonEnabled(state)
-                        ? _onFormSubmitted
-                        : null,
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           );
         },
       ),
@@ -146,8 +164,6 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 }
 
-
-
 class RegisterButton extends StatelessWidget {
   final VoidCallback _onPressed;
 
@@ -166,4 +182,3 @@ class RegisterButton extends StatelessWidget {
     );
   }
 }
-

@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_shop_app/data/repositories/user_repository.dart';
+import 'package:flutter_shop_app/utils/validators.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../../../validators.dart';
 import 'bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
